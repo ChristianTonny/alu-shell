@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# This script displays numbers from 1 to 100 with FizzBuzz rules
 
 for i in {1..100}
 do

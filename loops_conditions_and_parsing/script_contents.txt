@@ -1,0 +1,188 @@
+=== 1-for_best_school ===
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times using a for loop
+
+for ((i=0; i<10; i++))
+do
+    echo "Best School"
+done
+
+=== 2-while_best_school ===
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times using a while loop
+
+count=0
+while [ $count -lt 10 ]
+do
+    echo "Best School"
+    ((count++))
+done
+
+=== 3-until_best_school ===
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times using an until loop
+
+count=0
+until [ $count -eq 10 ]
+do
+    echo "Best School"
+    ((count++))
+done
+
+=== 4-if_9_say_hi ===
+#!/usr/bin/env bash
+# This script displays "Best School" 10 times, with "Hi" on the 9th iteration
+
+count=0
+while [ $count -lt 10 ]
+do
+    if [ $count -eq 8 ]
+    then
+        echo "Best School"
+        echo "Hi"
+    else
+        echo "Best School"
+    fi
+    ((count++))
+done
+
+=== 5-4_bad_luck_8_is_your_chance ===
+#!/usr/bin/env bash
+# This script loops from 1 to 10 with specific messages for 4th and 8th iterations
+
+count=1
+while [ $count -le 10 ]
+do
+    if [ $count -eq 4 ]
+    then
+        echo "bad luck"
+    elif [ $count -eq 8 ]
+    then
+        echo "good luck"
+    else
+        echo "Best School"
+    fi
+    ((count++))
+done
+
+=== 6-superstitious_numbers ===
+#!/usr/bin/env bash
+# This script displays numbers from 1 to 20 with superstitious messages
+
+count=1
+while [ $count -le 20 ]
+do
+    echo $count
+    case $count in
+        4)
+            echo "bad luck from China"
+            ;;
+        9)
+            echo "bad luck from Japan"
+            ;;
+        17)
+            echo "bad luck from Italy"
+            ;;
+    esac
+    ((count++))
+done
+
+=== 7-clock ===
+#!/usr/bin/env bash
+# This script displays the time for 12 hours and 59 minutes
+
+hour=0
+while [ $hour -le 12 ]
+do
+    echo "Hour: $hour"
+    minute=1
+    while [ $minute -le 59 ]
+    do
+        echo $minute
+        ((minute++))
+    done
+    ((hour++))
+done
+
+=== 8-for_ls ===
+#!/usr/bin/env bash
+# This script displays the content of the current directory in a list format
+
+for file in *
+do
+    if [ "${file:0:1}" != "." ]
+    then
+        echo "${file#*-}"
+    fi
+done
+
+=== 9-to_file_or_not_to_file ===
+#!/usr/bin/env bash
+# This script gives information about the school file
+
+if [ -e "school" ]
+then
+    echo "school file exists"
+    if [ -s "school" ]
+    then
+        echo "school file is not empty"
+    else
+        echo "school file is empty"
+    fi
+    if [ -f "school" ]
+    then
+        echo "school is a regular file"
+    fi
+else
+    echo "school file does not exist"
+fi
+
+=== 10-fizzbuzz ===
+#!/usr/bin/env bash
+# This script displays numbers from 1 to 100 with FizzBuzz rules
+
+for i in {1..100}
+do
+    if ((i % 3 == 0)) && ((i % 5 == 0))
+    then
+        echo "FizzBuzz"
+    elif ((i % 3 == 0))
+    then
+        echo "Fizz"
+    elif ((i % 5 == 0))
+    then
+        echo "Buzz"
+    else
+        echo "$i"
+    fi
+done
+
+=== 11-read_and_cut ===
+#!/usr/bin/env bash
+# This script displays specific content from /etc/passwd
+
+while IFS=: read -r username _ userid _ _ home _
+do
+    echo "$username:$userid:$home"
+done < /etc/passwd
+
+=== 12-tell_the_story_of_passwd ===
+#!/usr/bin/env bash
+# This script displays the content of /etc/passwd as a story
+
+while IFS=':' read -r username password uid gid info home shell; do
+    echo "The user $username is part of the $gid gang, lives in $home and rides $shell. $uid's place is protected by the passcode $password, more info about the user here: $info"
+done < "/etc/passwd"
+
+=== 13-lets_parse_apache_logs ===
+#!/usr/bin/env bash
+# This script displays the visitor IP along with the HTTP status code from the Apache log file
+
+awk '{print $1 " " $9}' apache-access.log
+
+=== 14-dig_the-data ===
+#!/usr/bin/env bash
+# This script groups visitors by IP and HTTP status code, and displays this data
+
+awk '{print $1 " " $9}' apache-access.log | sort | uniq -c | sort -rn
+

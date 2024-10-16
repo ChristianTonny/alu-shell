@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
-# This script displays numbers from 1 to 20 with superstitious messages
 
 count=1
 while [ $count -le 20 ]
